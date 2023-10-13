@@ -2,11 +2,16 @@ import { useEffect, useState } from 'react';
 
 import { createBackendInstance } from '@/utils/instances';
 
-import { contact as initialState } from '@/modules/contact';
+import { contact as initialContact } from '@/modules/contact';
+import { licenses as initialLicense } from '@/modules/licenses';
+
 import { Contact } from '@/types/ContactTypes';
+import { Licenses } from '@/types/LicenseTypes';
 
 const useChatwoot = () => {
-  const [contact, setContact] = useState<Contact | null>(initialState);
+  const [contact, setContact] = useState<Contact | null>(initialContact);
+  const [licenses, setLicenses] = useState<Licenses | null>(initialLicense);
+  const [invoices, setInvoices] = useState<any | null>(null);
   const [conversation, setConversation] = useState<any | null>(null);
   const [agent, setAgent] = useState<any | null>(null);
 
@@ -48,7 +53,6 @@ const useChatwoot = () => {
     };
   }, []);
 
-
   // Fetch account from backend
   const fetchAccount = async (userID: string | undefined) => {
     if (!userID) return;
@@ -56,13 +60,15 @@ const useChatwoot = () => {
       const {
         data: { account },
       } = await backend.get(`/account/${userID}`);
-      console.log(account);
+
+      setLicenses(account.connections);
+      setInvoices(account.invoices);
     } catch (error: any) {
       console.log(error);
     }
   };
 
-  return { contact, conversation, agent };
+  return { contact, conversation, agent, licenses, invoices };
 };
 
 export default useChatwoot;
