@@ -17,7 +17,7 @@ export default function Home() {
 
 	useEffect(() => {
 		const handleResponse = (event: any) => {
-      console.log('Received event from Chatwoot');
+      console.log('Received event from Chatwoot', event);
 
 			if (typeof event.data !== 'string' || !isJSONValid(event.data)) {
 				return;
@@ -32,7 +32,8 @@ export default function Home() {
 		window.addEventListener('message', handleResponse);
 
 		// Request data from Chatwoot
-		window.parent.postMessage('chatwoot-dashboard-app:fetch-info', '*');
+		const response = window.parent.postMessage('chatwoot-dashboard-app:fetch-info', '*');
+		console.log('response', response);
 
 		// Clean up the event listener when the component unmounts
 		return () => {
