@@ -4,7 +4,7 @@ import ChatWootProvider from '@/providers/ChatwootProvider';
 import { Inter } from 'next/font/google';
 const inter = Inter({ subsets: ['latin'] });
 
-import './globals.css';
+import './main.css';
 
 export const metadata: Metadata = {
   title: 'Chatwoot Dashboard App',

@@ -1,5 +1,7 @@
 import { useEffect, useState } from 'react';
 
+import { createBackendInstance } from '@/utils/instances';
+
 import { contact as initialState } from '@/modules/contact';
 import { Contact } from '@/types/ContactTypes';
 
@@ -7,6 +9,8 @@ const useChatwoot = () => {
   const [contact, setContact] = useState<Contact | null>(initialState);
   const [conversation, setConversation] = useState<any | null>(null);
   const [agent, setAgent] = useState<any | null>(null);
+
+  const backend = createBackendInstance();
 
   const isJSONValid = (data: string) => {
     try {
@@ -29,6 +33,8 @@ const useChatwoot = () => {
       setContact(contact);
       setConversation(conversation);
       setAgent(agent);
+
+      fetchAccount(contact.custom_attributes.supabase_user_id);
     };
 
     window.addEventListener('message', handleResponse);
@@ -41,6 +47,20 @@ const useChatwoot = () => {
       window.removeEventListener('message', handleResponse);
     };
   }, []);
+
+
+  // Fetch account from backend
+  const fetchAccount = async (userID: string | undefined) => {
+    if (!userID) return;
+    try {
+      const {
+        data: { account },
+      } = await backend.get(`/account/${userID}`);
+      console.log(account);
+    } catch (error: any) {
+      console.log(error);
+    }
+  };
 
   return { contact, conversation, agent };
 };
