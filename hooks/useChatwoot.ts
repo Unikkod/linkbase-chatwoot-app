@@ -9,8 +9,8 @@ import { Contact } from '@/types/ContactTypes';
 import { Licenses } from '@/types/LicenseTypes';
 
 const useChatwoot = () => {
-  const [contact, setContact] = useState<Contact | null>(initialContact);
-  const [licenses, setLicenses] = useState<Licenses | null>(initialLicense);
+  const [contact, setContact] = useState<Contact | null>(null);
+  const [licenses, setLicenses] = useState<Licenses | null>(null);
   const [invoices, setInvoices] = useState<any | null>(null);
   const [conversation, setConversation] = useState<any | null>(null);
   const [agent, setAgent] = useState<any | null>(null);
