@@ -29,7 +29,7 @@ export default function Home() {
           }
         >
           <CardWithHeader header='Licenses'>
-            <div className='flex flex-col gap-4'>{licenses.length > 0 ? <Table headers={['License', 'Active']} data={licenses.map((license: ILicense) => [license.license, license.active ? 'Active' : 'Inactive'])} /> : <p>No licenses found</p>}</div>
+            <div className='flex flex-col gap-4'>{licenses?.length > 0 ? <Table headers={['License', 'Active']} data={licenses.map((license: ILicense) => [license.license, license.active ? 'Active' : 'Inactive'])} /> : <p>No licenses found</p>}</div>
           </CardWithHeader>
         </Columns>
       ) : (
