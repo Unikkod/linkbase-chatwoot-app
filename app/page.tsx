@@ -1,13 +1,14 @@
 'use client';
 
+import { useContext } from 'react';
+
+import { ChatwootContext } from '@/context/ChatwootContext';
+
 import CardWithHeader from '@/components/CardWithHeader/CardWithHeader';
 import Container from '@/components/Container/Container';
 
-import useChatwoot from '@/hooks/useChatwoot';
-
 export default function Home() {
-  const { contact, conversation, agent } = useChatwoot();
-
+  const { contact } = useContext(ChatwootContext);
   return (
     <main className='flex min-h-screen flex-col items-center justify-between py-24'>
       <Container>
