@@ -3,21 +3,8 @@ import Container from '@/components/Container/Container';
 
 export default function Home() {
 	if (typeof window !== 'undefined') {
-		window.addEventListener('message', function (event) {
-			if (
-				typeof event.data !== 'string' ||
-				!event.data.includes('appContext')
-			) {
-				return;
-			}
-
-			const eventData = JSON.parse(event.data);
-
-			if (eventData.event === 'appContext') {
-				const contactData = eventData.data.contact;
-				console.log(contactData);
-			}
-		});
+		const response = window.parent.postMessage('chatwoot-dashboard-app:fetch-info', '*');
+		console.log(response);
 	}
 
 	return (
