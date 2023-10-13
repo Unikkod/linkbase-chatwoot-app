@@ -5,7 +5,7 @@ export interface ILicense {
   active: boolean;
   license: string;
   owner: string;
-  collaborator: string | null;
+  collaborator: string[] | null;
   subscription: {
     id: string;
     status: 'active' | 'inactive';
