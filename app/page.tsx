@@ -11,7 +11,11 @@ export default function Home() {
   return (
     <main className='flex min-h-screen flex-col items-center justify-between py-24'>
       <Container>
-        <CardWithHeader header='Hello World'>{contact.name} {contact.email} {contact.custom_attributes?.supabase_user_id}</CardWithHeader>
+        {contact ? (
+          <CardWithHeader header='Hello World'>
+            {contact.name} {contact.email} {contact.custom_attributes?.supabase_user_id}
+          </CardWithHeader>
+        ) : <p>No contact found</p>}
       </Container>
     </main>
   );
