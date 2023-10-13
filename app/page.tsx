@@ -9,7 +9,8 @@ export default function Home() {
 	const isJSONValid = (data: string) => {
 		try {
 			JSON.parse(data);
-		} catch (e) {
+		} catch (error: any) {
+      console.log('Invalid JSON', error);
 			return false;
 		}
 		return true;
@@ -23,9 +24,12 @@ export default function Home() {
 				return;
 			}
 
+      console.log('Is valid JSON');
+
 			const eventData = JSON.parse(event.data);
+      console.log('eventData', eventData);
 			if (eventData.type === 'chatwoot-dashboard-app:fetch-info') {
-				console.log(eventData.payload);
+        console.log('eventData.payload', eventData.payload);
 			}
 		}
 
