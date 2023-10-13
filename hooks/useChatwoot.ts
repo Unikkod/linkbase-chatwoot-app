@@ -4,7 +4,7 @@ import { contact as initialState } from '@/modules/contact';
 import { Contact } from '@/types/ContactTypes';
 
 const useChatwoot = () => {
-  const [contact, setContact] = useState<Contact | null>(null);
+  const [contact, setContact] = useState<Contact | null>(initialState);
   const [conversation, setConversation] = useState<any | null>(null);
   const [agent, setAgent] = useState<any | null>(null);
 

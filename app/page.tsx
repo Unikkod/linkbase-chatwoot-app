@@ -6,6 +6,7 @@ import { ChatwootContext } from '@/context/ChatwootContext';
 
 import CardWithHeader from '@/components/CardWithHeader/CardWithHeader';
 import Container from '@/components/Container/Container';
+import LabelAndValue from '@/components/LabelAndValue/LabelAndValue';
 
 export default function Home() {
   const { contact } = useContext(ChatwootContext);
@@ -15,9 +16,9 @@ export default function Home() {
         {contact ? (
           <CardWithHeader header='Customer'>
             <div className='flex flex-col gap-4'>
-              <p>{contact.name}</p>
-              <p>{contact.email}</p>
-              <p>{contact.custom_attributes?.supabase_user_id}</p>
+              <LabelAndValue label='Name' value={contact.name} />
+              <LabelAndValue label='Email' value={contact.email} />
+              <LabelAndValue label='Supabase User ID' value={contact.custom_attributes?.supabase_user_id} />
             </div>
           </CardWithHeader>
         ) : (
