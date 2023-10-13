@@ -13,7 +13,7 @@ export default function Home() {
   return (
     <main className='flex min-h-screen flex-col items-center justify-between py-10'>
       {contact ? (
-        <Columns leftColumn={<CardWithHeader header='Customer'>Left</CardWithHeader>} rightColumn={<CardWithHeader header='Customer'>Right</CardWithHeader>}>
+        <Columns rightColumn={<CardWithHeader header='Customer'>Right</CardWithHeader>}>
           <CardWithHeader header='Customer'>
             <div className='flex flex-col gap-4'>
               <LabelAndValue label='Name' value={contact.name} />
